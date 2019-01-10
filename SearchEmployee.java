@@ -46,7 +46,6 @@ public class SearchEmployee extends javax.swing.JFrame {
         DisplayLastNameField = new javax.swing.JTextField();
         DisplayLocationField = new javax.swing.JTextField();
         DisplayGenderField = new javax.swing.JTextField();
-        DisplayStatusField = new javax.swing.JTextField();
         DisplayNetIncomeField = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         DisplayAgeField = new javax.swing.JTextField();
@@ -54,20 +53,21 @@ public class SearchEmployee extends javax.swing.JFrame {
         UpdateEmployeeButton = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         DisplayFirstNameField = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        DisplayDeductionRateField = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
+        DeducationLabel = new javax.swing.JLabel();
+        YearlySalaryLabel = new javax.swing.JLabel();
         DisplayYearlySalaryField = new javax.swing.JTextField();
-        jLabel12 = new javax.swing.JLabel();
+        HourlyWageLabel = new javax.swing.JLabel();
         DisplayHourlyWageField = new javax.swing.JTextField();
         DisplayHoursPerWeekField = new javax.swing.JTextField();
-        jLabel13 = new javax.swing.JLabel();
+        HoursPerWeekLabel = new javax.swing.JLabel();
         DisplayWeeksPerYearField = new javax.swing.JTextField();
-        jLabel14 = new javax.swing.JLabel();
+        WeeksPerYearLabel = new javax.swing.JLabel();
+        DisplayDeductionRateField = new javax.swing.JTextField();
+        DisplayStatusField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Search Employee");
+        jLabel1.setText("Search and Edit Employee");
 
         jLabel2.setText("Employee Number");
 
@@ -115,11 +115,11 @@ public class SearchEmployee extends javax.swing.JFrame {
 
         jLabel9.setText("First Name");
 
-        jLabel10.setText("Deduction Rate");
+        DeducationLabel.setText("Deduction Rate");
 
-        jLabel11.setText("Yearly Salary");
+        YearlySalaryLabel.setText("Yearly Salary");
 
-        jLabel12.setText("Hourly Wage");
+        HourlyWageLabel.setText("Hourly Wage");
 
         DisplayHoursPerWeekField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,9 +127,9 @@ public class SearchEmployee extends javax.swing.JFrame {
             }
         });
 
-        jLabel13.setText("Hours/Week");
+        HoursPerWeekLabel.setText("Hours/Week");
 
-        jLabel14.setText("Weeks/Year");
+        WeeksPerYearLabel.setText("Weeks/Year");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -137,9 +137,6 @@ public class SearchEmployee extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(193, 193, 193)
-                        .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(104, 104, 104)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -171,36 +168,41 @@ public class SearchEmployee extends javax.swing.JFrame {
                                         .addComponent(jLabel8))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(DisplayGenderField)
+                                        .addComponent(DisplayGenderField, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
                                         .addComponent(DisplayAgeField)
-                                        .addComponent(DisplayStatusField, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(DisplayStatusField)))
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jLabel9)
                                     .addGap(18, 18, 18)
                                     .addComponent(DisplayFirstNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel10)
-                                        .addComponent(jLabel11)
-                                        .addComponent(jLabel12)
-                                        .addComponent(jLabel13)
-                                        .addComponent(jLabel14))
-                                    .addGap(18, 18, 18)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(DisplayWeeksPerYearField)
-                                        .addComponent(DisplayHoursPerWeekField)
-                                        .addComponent(DisplayDeductionRateField)
-                                        .addComponent(DisplayYearlySalaryField)
-                                        .addComponent(DisplayHourlyWageField)))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel7)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(DisplayNetIncomeField, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(DeducationLabel)
+                                                .addComponent(YearlySalaryLabel)
+                                                .addComponent(HourlyWageLabel)
+                                                .addComponent(HoursPerWeekLabel)
+                                                .addComponent(WeeksPerYearLabel))
+                                            .addGap(18, 18, 18)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(DisplayWeeksPerYearField)
+                                                .addComponent(DisplayHoursPerWeekField)
+                                                .addComponent(DisplayYearlySalaryField)
+                                                .addComponent(DisplayHourlyWageField)
+                                                .addComponent(DisplayDeductionRateField)))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jLabel7)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(DisplayNetIncomeField, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGap(113, 113, 113)
+                                        .addComponent(UpdateEmployeeButton)
+                                        .addGap(66, 66, 66))))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(164, 164, 164)
+                        .addComponent(jLabel1)))
                 .addContainerGap(69, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(UpdateEmployeeButton)
-                .addGap(201, 201, 201))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -238,36 +240,36 @@ public class SearchEmployee extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(DisplayAgeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(DisplayStatusField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(DisplayStatusField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
+                    .addComponent(DeducationLabel)
                     .addComponent(DisplayDeductionRateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
+                    .addComponent(YearlySalaryLabel)
                     .addComponent(DisplayYearlySalaryField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
+                    .addComponent(HourlyWageLabel)
                     .addComponent(DisplayHourlyWageField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(DisplayHoursPerWeekField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel13))
+                    .addComponent(HoursPerWeekLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel14)
+                    .addComponent(WeeksPerYearLabel)
                     .addComponent(DisplayWeeksPerYearField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(DisplayNetIncomeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(UpdateEmployeeButton)
-                .addContainerGap())
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         pack();
@@ -285,11 +287,12 @@ public class SearchEmployee extends javax.swing.JFrame {
         
         int number = Integer.parseInt(SearchField.getText());
 
-        this.hashTable.searchEmployee(number);
-        if(hashTable.searchEmployee(number) == null || SearchField.getText() == null){
-            ErrorMessage.setVisible(true);
+        this.hashTable.searchEmployee(number); 
+        if(hashTable.searchEmployee(number) == null || SearchField.getText() == null){          //error message
+            ErrorMessage.setVisible(true);          
         }
-        DisplayFirstNameField.setText(this.hashTable.searchEmployee(number).getFirstName()); 
+        else{
+        DisplayFirstNameField.setText(this.hashTable.searchEmployee(number).getFirstName());    //set the attributes of employee to be visible
         DisplayLastNameField.setText(this.hashTable.searchEmployee(number).getLastName());
         
         if("0".equals(Integer.toString(this.hashTable.searchEmployee(number).getLocation()))){
@@ -321,7 +324,7 @@ public class SearchEmployee extends javax.swing.JFrame {
         
         DisplayAgeField.setText(Integer.toString(this.hashTable.searchEmployee(number).getAge()));
         
-        if(this.hashTable.searchEmployee(number) instanceof PTE){
+        if(this.hashTable.searchEmployee(number) instanceof PTE){                   //display values based off of employee type
             PTE partTimeToBeSearched = (PTE) this.hashTable.searchEmployee(number);
             DisplayNetIncomeField.setText("$ " + Double.toString(partTimeToBeSearched.calcAnnualNetIncome(partTimeToBeSearched)));
             DisplayDeductionRateField.setText(Double.toString(partTimeToBeSearched.getDeductionRate()));
@@ -332,7 +335,7 @@ public class SearchEmployee extends javax.swing.JFrame {
             DisplayYearlySalaryField.setText("0");
             
         }
-        if(this.hashTable.searchEmployee(number) instanceof FTE){
+        if(this.hashTable.searchEmployee(number) instanceof FTE){               
             FTE fullTimeToBeSearched = (FTE) this.hashTable.searchEmployee(number);
             DisplayNetIncomeField.setText("$ " + Double.toString(fullTimeToBeSearched.calcAnnualNetIncome(fullTimeToBeSearched)));
             DisplayDeductionRateField.setText(Double.toString(fullTimeToBeSearched.getDeductionRate()));
@@ -341,7 +344,7 @@ public class SearchEmployee extends javax.swing.JFrame {
             DisplayHoursPerWeekField.setText("0");
             DisplayWeeksPerYearField.setText("0");
         }
-             
+        }
     }//GEN-LAST:event_SearchButtonActionPerformedActionPerformed
 
     private void SearchFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchFieldActionPerformed
@@ -351,9 +354,9 @@ public class SearchEmployee extends javax.swing.JFrame {
     private void UpdateEmployeeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateEmployeeButtonActionPerformed
         // TODO add your handling code here:
         //int en = parseInt(DisplayNumberField.getText());
-        if("Full Time Employee".equals(DisplayStatusField.getText())){
-            int en = parseInt(SearchField.getText());
-            String firstN = DisplayFirstNameField.getText();
+        if("Full Time Employee".equals(DisplayStatusField.getText())){   //if FTE button is selcted
+            int en = parseInt(SearchField.getText());                       //set values of new employee
+            String firstN = DisplayFirstNameField.getText();        
             String lastN = DisplayLastNameField.getText();
             int age = parseInt(DisplayAgeField.getText());
             int sex = 0;
@@ -381,14 +384,17 @@ public class SearchEmployee extends javax.swing.JFrame {
             double hourlyWage = parseDouble(DisplayHourlyWageField.getText());
             double hoursPerWeek = parseDouble(DisplayHoursPerWeekField.getText());   
             double weeksPerYear = parseDouble(DisplayWeeksPerYearField.getText());
+            /*boolean equals = "0".equals(DisplayHourlyWageField.getText());
+            boolean equals1 = "0".equals(DisplayHoursPerWeekField.getText());
+            boolean equals2 = "0".equals(DisplayWeeksPerYearField.getText());*/
             FTE FullTimer = new FTE (en, firstN, lastN, age, sex, deduct, location, salary);
-            this.hashTable.removeEmployee(en);
-            this.hashTable.addEmployee(FullTimer); 
+            this.hashTable.removeEmployee(en);                                  //remove old employee             
+            this.hashTable.addEmployee(FullTimer);                              //add new employee to the table
             SuccessfullyUpdate new_Window = new SuccessfullyUpdate();
             new_Window.setVisible(true);
             dispose();
         }
-        if("Part Time Employee".equals(DisplayStatusField.getText())){
+        if("Part Time Employee".equals(DisplayStatusField.getText())){          // if PTE button is selected; code is basically the same as FTE
             int en = parseInt(SearchField.getText());
             String firstN = DisplayFirstNameField.getText();
             String lastN = DisplayLastNameField.getText();
@@ -419,11 +425,13 @@ public class SearchEmployee extends javax.swing.JFrame {
             double hoursPerWeek = parseDouble(DisplayHoursPerWeekField.getText());   
             double weeksPerYear = parseDouble(DisplayWeeksPerYearField.getText());
             PTE PartTimer = new PTE (en, firstN, lastN, age, sex, deduct, location, hourlyWage, hoursPerWeek, weeksPerYear);
+            //boolean equals = "0".equals(DisplayYearlySalaryField.getText());
             this.hashTable.removeEmployee(en);
             this.hashTable.addEmployee(PartTimer); 
             SuccessfullyUpdate new_Window = new SuccessfullyUpdate();
             new_Window.setVisible(true);
             dispose();
+        
         }
             //System.out.println(this.hashTable.getRealSize());
             //Successfully_Added new_Window = new Successfully_Added();
@@ -441,6 +449,7 @@ public class SearchEmployee extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel DeducationLabel;
     private javax.swing.JTextField DisplayAgeField;
     private javax.swing.JTextField DisplayDeductionRateField;
     private javax.swing.JTextField DisplayFirstNameField;
@@ -454,16 +463,15 @@ public class SearchEmployee extends javax.swing.JFrame {
     private javax.swing.JTextField DisplayWeeksPerYearField;
     private javax.swing.JTextField DisplayYearlySalaryField;
     private javax.swing.JLabel ErrorMessage;
+    private javax.swing.JLabel HourlyWageLabel;
+    private javax.swing.JLabel HoursPerWeekLabel;
     private javax.swing.JButton SearchBack;
     private javax.swing.JButton SearchButtonActionPerformed;
     private javax.swing.JTextField SearchField;
     private javax.swing.JButton UpdateEmployeeButton;
+    private javax.swing.JLabel WeeksPerYearLabel;
+    private javax.swing.JLabel YearlySalaryLabel;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

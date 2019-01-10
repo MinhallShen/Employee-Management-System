@@ -28,7 +28,7 @@ import javax.swing.JOptionPane;
  */
 public class Save extends javax.swing.JFrame {
     MyHashTable hashTable;
-    private String saveLocation = "C:\\Users\\minha\\Downloads\\EmployeeManagementSystem\\src";
+    private String saveLocation = "C:/Users/minha/Downloads/EmployeeManagementSystem/src";
     /**
      * Creates new form Save
      */
@@ -107,21 +107,23 @@ public class Save extends javax.swing.JFrame {
 
     private void SaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveButtonActionPerformed
         // TODO add your handling code here:
-        BufferedWriter bw = null;
+        BufferedWriter bw = null;       //create bufferedwriter
+        //FileWriter fw = null;
         PTE tempPTE = null;
         FTE tempFTE = null;
         String separator = "^";
         String data = "";
         try{
-            File file = new File("C:/" + FileNameBox.getText() + ".txt");
+            File file = new File("C:/users/minha/" + FileNameBox.getText() + ".txt");       //save location
+            
             if(!file.exists()){
                file.createNewFile();
            }
-            FileWriter fw = new FileWriter(file);
-            bw = new BufferedWriter(fw);
-            for (int i = 0; i < hashTable.buckets.length; i++){
-                for(int j = 0; j < hashTable.buckets[i].size(); j++){
-                    if(hashTable.buckets[i].get(j) instanceof PTE){
+            FileWriter fw = new FileWriter(file);       //create filewriter
+            bw = new BufferedWriter(fw);                //create bufferedwriter
+            for (int i = 0; i < hashTable.buckets.length; i++){ //go through the buckets
+                for(int j = 0; j < hashTable.buckets[i].size(); j++){   //go through the arryas within the buckets
+                    if(hashTable.buckets[i].get(j) instanceof PTE){     //write the attributes of PTE
                         data = tempPTE.getEmployeeNumber() + separator + 
                               tempPTE.getFirstName() + separator + 
                               tempPTE.getLastName() + separator + 
@@ -133,7 +135,7 @@ public class Save extends javax.swing.JFrame {
                               tempPTE.getHoursInWeek() + separator + 
                               tempPTE.weekInYears() + "\n";
                    }
-                    if(hashTable.buckets[i].get(j) instanceof FTE){
+                    if(hashTable.buckets[i].get(j) instanceof FTE){ //write the attributes of FTE
                        data = tempFTE.getEmployeeNumber() + separator + 
                               tempFTE.getFirstName() + separator + 
                               tempFTE.getLastName() + separator + 
@@ -143,7 +145,8 @@ public class Save extends javax.swing.JFrame {
                               tempFTE.getLocation() + separator + 
                               tempFTE.getAnnualSalary() + "\n";
                    }
-                   bw.write(data);
+                   bw.write(data);      //write the data onto the file
+                   
                    System.out.println("Successfully written file");
                }
            }
@@ -158,6 +161,10 @@ public class Save extends javax.swing.JFrame {
                 if(bw != null){
                     bw.close();
                 }
+                
+                //if(fw != null){
+                  //  fw.close();
+                //}
             }
             catch(Exception ex){
                 System.out.println("Error in closing the BufferedWriter"+ex);

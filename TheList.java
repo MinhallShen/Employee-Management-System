@@ -114,16 +114,16 @@ public class TheList extends javax.swing.JFrame {
     private void jTableViewAllAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jTableViewAllAncestorAdded
         // TODO add your handling code here:
         int rowIndex = 0;
-        for (int i = 0; i < hashTable.buckets.length; i++){
+        for (int i = 0; i < hashTable.buckets.length; i++){         //
             System.out.println(hashTable.buckets.length);
             System.out.println(hashTable.buckets[i].size());
-            for (int j = 0; j < hashTable.buckets[i].size(); j++){
+            for (int j = 0; j < hashTable.buckets[i].size(); j++){  //set the attributes in each cell of the table
                 System.out.println(hashTable.buckets[i].size());
              
                 
-                jTableViewAll.getModel().setValueAt(Integer.toString(hashTable.buckets[i].get(j).getEmployeeNumber()), rowIndex, 0);
-                jTableViewAll.getModel().setValueAt(hashTable.buckets[i].get(j).getFirstName(), rowIndex, 1);
-                jTableViewAll.getModel().setValueAt(hashTable.buckets[i].get(j).getLastName(), rowIndex, 2);
+                jTableViewAll.getModel().setValueAt(Integer.toString(hashTable.buckets[i].get(j).getEmployeeNumber()), rowIndex, 0); //employee number is written in the first cell of the row
+                jTableViewAll.getModel().setValueAt(hashTable.buckets[i].get(j).getFirstName(), rowIndex, 1);   //first name is written in the second cell of the row
+                jTableViewAll.getModel().setValueAt(hashTable.buckets[i].get(j).getLastName(), rowIndex, 2);    // last name is written in the third cell, etc.
                     if(hashTable.buckets[i].get(j).getSex() == 0){
                 jTableViewAll.getModel().setValueAt("Male", rowIndex, 3);
                     }

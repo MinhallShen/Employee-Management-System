@@ -8,7 +8,7 @@
  *
  * @author minha
  */
-public class FTE extends EmployeeInfo{
+public class FTE extends EmployeeInfo{  
         private double annualSalary;
         
         public FTE(int em, String fN, String lN, int old, int gender, double deduction, int place, double annualSalary){

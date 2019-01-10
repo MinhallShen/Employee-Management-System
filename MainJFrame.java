@@ -4,8 +4,11 @@
  * and open the template in the editor.
  */
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 /**
  *
  * @author minha
@@ -80,8 +83,18 @@ public class MainJFrame extends javax.swing.JFrame {
         });
 
         SaveToFileButton.setText("Save");
+        SaveToFileButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SaveToFileButtonActionPerformed(evt);
+            }
+        });
 
         LoadFromFileButton.setText("Load");
+        LoadFromFileButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LoadFromFileButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -157,41 +170,7 @@ public class MainJFrame extends javax.swing.JFrame {
         //EmployeeInfo tempEmployee = new EmployeeInfo();
         TheList new_Window = new TheList(hashTable);
         new_Window.setVisible(true);
-        /*javax.swing.table.DefaultTableModel model = (javax.swing.table.DefaultTableModel) 
-        TheList.getModel();
-        for (int i = 0; i < hashTable.buckets.length; i++) {
-            for (int j = 0; j < hashTable.buckets[i].size(); j++) {
-                model.addRow(new Object[]{Integer.toString(hashTable.buckets[i].get(j).getEmployeeNumber()), 
-                    hashTable.buckets[i].get(j).getFirstName(), 
-                    hashTable.buckets[i].get(j).getLastName(), 
-                    null, null});
-                if (hashTable.buckets[i].get(j).getSex() == 0) {
-                    TheList.getModel().setValueAt("Male", rowIndex, 3);
-                } 
-                if(hashTable.buckets[i].get(j).getSex() == 1) {
-                    TheList.getModel().setValueAt("Female", rowIndex, 3);
-                }
-                if(hashTable.buckets[i].get(j).getSex() == 2) {
-                    TheList.getModel().setValueAt("Other", rowIndex, 3);
-                }
-                if (hashTable.buckets[i].get(j) instanceof FTE) {
-                    FTE thisFTE = (FTE) hashTable.buckets[i].get(j);
-                    TheList.getModel().setValueAt(Float.toString(thisFTE.getDeductionRate()), rowIndex, 4);
-                }   
-                else {
-                    PTE thisPTE = (PTE) hashTable.buckets[i].get(j);
-                    TheList.getModel().setValueAt(Float.toString(thisPTE.getDeductionRate()), rowIndex, 4);
-                }
-                rowIndex++;
-                
-            }
-            
-            
-        }*/
-    
-        //this.hashTable.listEmployees();
-        //MyHashTable runList = new MyHashTable();
-        //runList.listEmployees();
+        
     }//GEN-LAST:event_ListButtonActionPerformed
 
     private void RemoveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RemoveButtonActionPerformed
@@ -199,6 +178,19 @@ public class MainJFrame extends javax.swing.JFrame {
         new_Window.setVisible(true);
         //MainJFrame.this.setVisible(false);
     }//GEN-LAST:event_RemoveButtonActionPerformed
+
+    private void SaveToFileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveToFileButtonActionPerformed
+        // TODO add your handling code here:
+        Save new_Window = new Save(hashTable);
+        new_Window.setVisible(true);
+    }//GEN-LAST:event_SaveToFileButtonActionPerformed
+
+    private void LoadFromFileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoadFromFileButtonActionPerformed
+        // TODO add your handling code here:
+        Load new_Window = new Load(hashTable);
+        new_Window.setVisible(true);
+        
+    }//GEN-LAST:event_LoadFromFileButtonActionPerformed
 
     /**
      * @param args the command line arguments

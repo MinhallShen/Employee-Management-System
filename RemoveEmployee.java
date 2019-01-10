@@ -56,7 +56,7 @@ public class RemoveEmployee extends javax.swing.JFrame {
             }
         });
 
-        EMPNumError.setText("Error! The employee number was not found in the system.");
+        EMPNumError.setText("You did not enter anything!");
         EMPNumError.setVisible(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -72,16 +72,16 @@ public class RemoveEmployee extends javax.swing.JFrame {
                         .addGap(132, 132, 132)
                         .addComponent(RemoveEMPNumLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(RemoveEMPNumField, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(79, 79, 79)
-                        .addComponent(EMPNumError)))
+                        .addComponent(RemoveEMPNumField, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(165, Short.MAX_VALUE)
-                .addComponent(BackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(ConfirmButton)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(EMPNumError)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(BackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(ConfirmButton)))
                 .addGap(260, 260, 260))
         );
         layout.setVerticalGroup(
@@ -114,12 +114,21 @@ public class RemoveEmployee extends javax.swing.JFrame {
 
     private void ConfirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmButtonActionPerformed
         // TODO add your handling code here:
-           
+        try{
+      int number = Integer.parseInt(RemoveEMPNumField.getText());
+      
+      this.hashTable.removeEmployee(number);
+      System.out.println(this.hashTable.getRealSize());
+      dispose();
+  }
+  catch (Exception e){
+      EMPNumError.setVisible(true);
+  }   
         //boolean removed = true;
-        int number = Integer.parseInt(RemoveEMPNumField.getText());       
+        /*int number = Integer.parseInt(RemoveEMPNumField.getText());       
         this.hashTable.removeEmployee(number);
         System.out.println(this.hashTable.getRealSize());
-        dispose();
+        dispose();*/
         //this.hashTable.getRealSize();
         //this.hashTable.listEmployees();
         /*if ("".equals(RemoveEMPNumField.getText())){

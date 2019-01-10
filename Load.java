@@ -88,9 +88,9 @@ public class Load extends javax.swing.JFrame {
         BufferedReader reader;
         
         try{
-            reader = new BufferedReader(new FileReader(LoadFileBox.getText() + ".txt"));
+            reader = new BufferedReader(new FileReader(LoadFileBox.getText() + ".txt"));    //create bufferedreader
             String line = reader.readLine();
-            while((line = reader.readLine()) != null){
+            while((line = reader.readLine()) != null){  //while the line exists, keep reading
                 String[] var = line.split("^");
                 if(var[8] != null){
                     int en = parseInt(var[0]);
@@ -104,7 +104,7 @@ public class Load extends javax.swing.JFrame {
                     double hoursInWeek = parseDouble(var[8]);
                     double weeksInYear = parseDouble(var[9]);
                     PTE tempPTE = new PTE(en, firstN, lastN, age, sex, deduct, location, hourlyWage, hoursInWeek, weeksInYear);
-                    this.hashTable.addEmployee(tempPTE);
+                    this.hashTable.addEmployee(tempPTE); //add PTE
                 }
                 else{
                     int en = parseInt(var[0]);
@@ -116,7 +116,7 @@ public class Load extends javax.swing.JFrame {
                     double deduct = parseDouble(var[6]);
                     double salary = parseDouble(var[7]);
                     FTE tempFTE = new FTE(en, firstN, lastN, age, sex, deduct, location, salary);
-                    this.hashTable.addEmployee(tempFTE);
+                    this.hashTable.addEmployee(tempFTE);  //add FTE
                 }
             }
             reader.close();

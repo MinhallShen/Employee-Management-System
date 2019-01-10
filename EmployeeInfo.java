@@ -17,7 +17,7 @@ class EmployeeInfo {
     private double deductionRate;
     private int location;
     
-    public EmployeeInfo(){
+    public EmployeeInfo(){  //constructor
         employeeNumber = -1;
         firstName = null;
         lastName = null;
@@ -26,7 +26,7 @@ class EmployeeInfo {
         deductionRate = 0;
         location = -1;
     }
-    public EmployeeInfo(int em, String fN, String lN, int old, int gender, double deduction, int place){
+    public EmployeeInfo(int em, String fN, String lN, int old, int gender, double deduction, int place){    //constructor
         employeeNumber = em;
         firstName = fN;
         lastName = lN;
@@ -35,7 +35,7 @@ class EmployeeInfo {
         deductionRate = deduction;
         location = place;   
     }
-    
+    //getters and setters
     public void setEmployeeNumber(int Number){
         this.employeeNumber = Number;
     }
