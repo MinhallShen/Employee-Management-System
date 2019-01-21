@@ -33,10 +33,11 @@ public class Save extends javax.swing.JFrame {
      * Creates new form Save
      */
     public Save(MyHashTable myHashTable) {
-        this.hashTable = hashTable;
+        this.hashTable = myHashTable;
         initComponents();
     }
 
+ 
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -106,7 +107,7 @@ public class Save extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void SaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveButtonActionPerformed
-        // TODO add your handling code here:
+                
         BufferedWriter bw = null;       //create bufferedwriter
         //FileWriter fw = null;
         PTE tempPTE = null;
@@ -116,15 +117,28 @@ public class Save extends javax.swing.JFrame {
         try{
             File file = new File("C:/users/minha/" + FileNameBox.getText() + ".txt");       //save location
             
-            if(!file.exists()){
+            /*if(!file.exists()){
                file.createNewFile();
-           }
+           }*/
             FileWriter fw = new FileWriter(file);       //create filewriter
             bw = new BufferedWriter(fw);                //create bufferedwriter
+            
+//            System.out.println(hashTable);
+//            System.out.println(hashTable.buckets);
+//            System.out.println(hashTable.buckets.length);
+            bw.write("IGNORE");
             for (int i = 0; i < hashTable.buckets.length; i++){ //go through the buckets
+                if(hashTable.buckets[i] == null){
+                     continue;   
+                        }
                 for(int j = 0; j < hashTable.buckets[i].size(); j++){   //go through the arryas within the buckets
+                    if(hashTable.buckets[i].get(j) == null){
+                        continue;
+                    }
                     if(hashTable.buckets[i].get(j) instanceof PTE){     //write the attributes of PTE
-                        data = tempPTE.getEmployeeNumber() + separator + 
+                       
+                        tempPTE = (PTE)hashTable.buckets[i].get(j);
+                        data = "\r\n" + tempPTE.getEmployeeNumber() + separator + 
                               tempPTE.getFirstName() + separator + 
                               tempPTE.getLastName() + separator + 
                               tempPTE.getAge() + separator + 
@@ -133,19 +147,25 @@ public class Save extends javax.swing.JFrame {
                               tempPTE.getLocation() + separator + 
                               tempPTE.getHourlyWage() +  separator + 
                               tempPTE.getHoursInWeek() + separator + 
-                              tempPTE.weekInYears() + "\n";
+                              tempPTE.weekInYears();
+                        bw.write(data);      //write the data onto the file
+                        
                    }
                     if(hashTable.buckets[i].get(j) instanceof FTE){ //write the attributes of FTE
-                       data = tempFTE.getEmployeeNumber() + separator + 
+                        
+                        tempFTE = (FTE)hashTable.buckets[i].get(j);
+                        data = "\r\n" + tempFTE.getEmployeeNumber() + separator + 
                               tempFTE.getFirstName() + separator + 
                               tempFTE.getLastName() + separator + 
                               tempFTE.getAge() + separator + 
                               tempFTE.getSex() + separator + 
                               tempFTE.getDeductionRate() + separator + 
                               tempFTE.getLocation() + separator + 
-                              tempFTE.getAnnualSalary() + "\n";
+                              tempFTE.getAnnualSalary();
+                        bw.write(data);      //write the data onto the file
+                        
                    }
-                   bw.write(data);      //write the data onto the file
+                   
                    
                    System.out.println("Successfully written file");
                }
@@ -162,9 +182,9 @@ public class Save extends javax.swing.JFrame {
                     bw.close();
                 }
                 
-                //if(fw != null){
-                  //  fw.close();
-                //}
+                /*if(fw != null){
+                  fw.close();
+                }*/
             }
             catch(Exception ex){
                 System.out.println("Error in closing the BufferedWriter"+ex);
