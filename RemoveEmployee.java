@@ -56,7 +56,7 @@ public class RemoveEmployee extends javax.swing.JFrame {
             }
         });
 
-        EMPNumError.setText("You did not enter anything!");
+        EMPNumError.setText("Error!");
         EMPNumError.setVisible(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -120,6 +120,10 @@ public class RemoveEmployee extends javax.swing.JFrame {
       this.hashTable.removeEmployee(number);
       System.out.println(this.hashTable.getRealSize());
       dispose();
+     Successfully_Removed new_Window = new Successfully_Removed();
+     new_Window.setVisible(true);
+      
+      
   }
   catch (Exception e){
       EMPNumError.setVisible(true);

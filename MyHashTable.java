@@ -21,11 +21,12 @@ public class MyHashTable {
     
     //private String saveLocation = "C:/Users/minha/Downloads/EmployeeManagementSystem/src";
 
-    ArrayList<EmployeeInfo>[] buckets = new ArrayList[bucketSize];
+    ArrayList<EmployeeInfo>[] buckets;
 
     public MyHashTable() {   // hash function
+        buckets = new ArrayList[bucketSize];
         for (int i = 0; i < bucketSize; i++) {
-            buckets[i] = new ArrayList<EmployeeInfo>();
+            buckets[i] = new ArrayList<>();
 
         }
     }
@@ -146,8 +147,6 @@ public class MyHashTable {
             }
         }
     }   
-    
-
     public int getRealSize() {
         return realSize;
     }

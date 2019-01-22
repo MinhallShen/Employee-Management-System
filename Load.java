@@ -89,7 +89,7 @@ public class Load extends javax.swing.JFrame {
         
         try{
             
-            reader = new BufferedReader(new FileReader(new File("C:/Users/minha/" + LoadFileBox.getText() + ".txt")));    //create bufferedreader
+            reader = new BufferedReader(new FileReader(new File("C:/Users/willi/" + LoadFileBox.getText() + ".txt")));    //create bufferedreader
             String line;
             while(!"END".equals(line = reader.readLine())){  //while the line exists, keep reading
 

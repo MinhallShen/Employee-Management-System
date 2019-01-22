@@ -115,7 +115,7 @@ public class Save extends javax.swing.JFrame {
         String separator = "^";
         String data = "";
         try{
-            File file = new File("C:/users/minha/" + FileNameBox.getText() + ".txt");       //save location
+            File file = new File("C:/Users/willi/" + FileNameBox.getText() + ".txt");       //save location
             
             /*if(!file.exists()){
                file.createNewFile();

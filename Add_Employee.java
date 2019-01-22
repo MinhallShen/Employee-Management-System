@@ -106,7 +106,7 @@ public class Add_Employee extends javax.swing.JFrame {
             }
         });
 
-        DeductionRateLabel.setText("Deducation Rate");
+        DeductionRateLabel.setText("Deduction Rate");
         DeductionRateLabel.setVisible(false);
 
         DeductionRateField.setVisible(false);

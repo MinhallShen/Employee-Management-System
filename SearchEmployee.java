@@ -64,6 +64,7 @@ public class SearchEmployee extends javax.swing.JFrame {
         WeeksPerYearLabel = new javax.swing.JLabel();
         DisplayDeductionRateField = new javax.swing.JTextField();
         DisplayStatusField = new javax.swing.JTextField();
+        SecondErrorMessage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -131,6 +132,9 @@ public class SearchEmployee extends javax.swing.JFrame {
 
         WeeksPerYearLabel.setText("Weeks/Year");
 
+        SecondErrorMessage.setText("Error!");
+        SecondErrorMessage.setVisible(false);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -197,7 +201,9 @@ public class SearchEmployee extends javax.swing.JFrame {
                                             .addComponent(DisplayNetIncomeField, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addGap(113, 113, 113)
-                                        .addComponent(UpdateEmployeeButton)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(UpdateEmployeeButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(SecondErrorMessage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                         .addGap(66, 66, 66))))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(164, 164, 164)
@@ -269,7 +275,9 @@ public class SearchEmployee extends javax.swing.JFrame {
                     .addComponent(DisplayNetIncomeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(UpdateEmployeeButton)
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(SecondErrorMessage)
+                .addContainerGap(87, Short.MAX_VALUE))
         );
 
         pack();
@@ -284,14 +292,20 @@ public class SearchEmployee extends javax.swing.JFrame {
 
     private void SearchButtonActionPerformedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchButtonActionPerformedActionPerformed
         // TODO add your handling code here:
-        
+        if (SearchField.getText().equals("")){
+            ErrorMessage.setVisible(true);
+            
+        }
+        else{
         int number = Integer.parseInt(SearchField.getText());
 
         this.hashTable.searchEmployee(number); 
-        if(hashTable.searchEmployee(number) == null || SearchField.getText() == null){          //error message
+        if(hashTable.searchEmployee(number) == null){          //error message
             ErrorMessage.setVisible(true);          
         }
         else{
+            ErrorMessage.setVisible(false);
+
         DisplayFirstNameField.setText(this.hashTable.searchEmployee(number).getFirstName());    //set the attributes of employee to be visible
         DisplayLastNameField.setText(this.hashTable.searchEmployee(number).getLastName());
         
@@ -331,7 +345,6 @@ public class SearchEmployee extends javax.swing.JFrame {
             DisplayHourlyWageField.setText(Double.toString(partTimeToBeSearched.getHourlyWage()));
             DisplayHoursPerWeekField.setText(Double.toString(partTimeToBeSearched.getHoursInWeek()));
             DisplayWeeksPerYearField.setText(Double.toString(partTimeToBeSearched.weekInYears()));
-            DisplayDeductionRateField.setText("0");
             DisplayYearlySalaryField.setText("0");
             
         }
@@ -345,6 +358,7 @@ public class SearchEmployee extends javax.swing.JFrame {
             DisplayWeeksPerYearField.setText("0");
         }
         }
+        }
     }//GEN-LAST:event_SearchButtonActionPerformedActionPerformed
 
     private void SearchFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchFieldActionPerformed
@@ -354,6 +368,24 @@ public class SearchEmployee extends javax.swing.JFrame {
     private void UpdateEmployeeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateEmployeeButtonActionPerformed
         // TODO add your handling code here:
         //int en = parseInt(DisplayNumberField.getText());
+            if (DisplayFirstNameField.getText().equals("") || DisplayLastNameField.getText().equals("") || DisplayLocationField.getText().equals("") || DisplayStatusField.getText().equals("") || DisplayGenderField.getText().equals("")
+                    || DisplayHoursPerWeekField.getText().equals("") || DisplayAgeField.getText().equals("") || DisplayHourlyWageField.getText().equals("")
+                    || DisplayWeeksPerYearField.getText().equals("") || DisplayDeductionRateField.getText().equals("") 
+                    || DisplayYearlySalaryField.getText().equals("")){
+                SecondErrorMessage.setVisible(true);
+            }
+            else{
+            try{
+            Double.parseDouble(DisplayHoursPerWeekField.getText());            //get the text of the values in the textbox and convert it to int or double
+            Integer.parseInt(DisplayAgeField.getText());
+            Double.parseDouble(DisplayHourlyWageField.getText());
+            Double.parseDouble(DisplayWeeksPerYearField.getText());
+            Double.parseDouble(DisplayDeductionRateField.getText());
+            Double.parseDouble(DisplayYearlySalaryField.getText());
+            }
+                catch (Exception e){
+                SecondErrorMessage.setVisible(true);
+            }
         if("Full Time Employee".equals(DisplayStatusField.getText())){   //if FTE button is selcted
             int en = parseInt(SearchField.getText());                       //set values of new employee
             String firstN = DisplayFirstNameField.getText();        
@@ -433,6 +465,7 @@ public class SearchEmployee extends javax.swing.JFrame {
             dispose();
         
         }
+            }
             //System.out.println(this.hashTable.getRealSize());
             //Successfully_Added new_Window = new Successfully_Added();
             //new_Window.setVisible(true);
@@ -468,6 +501,7 @@ public class SearchEmployee extends javax.swing.JFrame {
     private javax.swing.JButton SearchBack;
     private javax.swing.JButton SearchButtonActionPerformed;
     private javax.swing.JTextField SearchField;
+    private javax.swing.JLabel SecondErrorMessage;
     private javax.swing.JButton UpdateEmployeeButton;
     private javax.swing.JLabel WeeksPerYearLabel;
     private javax.swing.JLabel YearlySalaryLabel;
