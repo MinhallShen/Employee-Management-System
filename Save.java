@@ -126,7 +126,7 @@ public class Save extends javax.swing.JFrame {
 //            System.out.println(hashTable);
 //            System.out.println(hashTable.buckets);
 //            System.out.println(hashTable.buckets.length);
-            bw.write("IGNORE");
+            //bw.write("DO NOT MODIFY");
             for (int i = 0; i < hashTable.buckets.length; i++){ //go through the buckets
                 if(hashTable.buckets[i] == null){
                      continue;   
@@ -138,7 +138,7 @@ public class Save extends javax.swing.JFrame {
                     if(hashTable.buckets[i].get(j) instanceof PTE){     //write the attributes of PTE
                        
                         tempPTE = (PTE)hashTable.buckets[i].get(j);
-                        data = "\r\n" + tempPTE.getEmployeeNumber() + separator + 
+                        data = tempPTE.getEmployeeNumber() + separator + 
                               tempPTE.getFirstName() + separator + 
                               tempPTE.getLastName() + separator + 
                               tempPTE.getAge() + separator + 
@@ -147,30 +147,32 @@ public class Save extends javax.swing.JFrame {
                               tempPTE.getLocation() + separator + 
                               tempPTE.getHourlyWage() +  separator + 
                               tempPTE.getHoursInWeek() + separator + 
-                              tempPTE.weekInYears();
+                              tempPTE.weekInYears() + "\r\n";
                         bw.write(data);      //write the data onto the file
                         
                    }
                     if(hashTable.buckets[i].get(j) instanceof FTE){ //write the attributes of FTE
                         
                         tempFTE = (FTE)hashTable.buckets[i].get(j);
-                        data = "\r\n" + tempFTE.getEmployeeNumber() + separator + 
+                        data = tempFTE.getEmployeeNumber() + separator + 
                               tempFTE.getFirstName() + separator + 
                               tempFTE.getLastName() + separator + 
                               tempFTE.getAge() + separator + 
                               tempFTE.getSex() + separator + 
                               tempFTE.getDeductionRate() + separator + 
                               tempFTE.getLocation() + separator + 
-                              tempFTE.getAnnualSalary();
+                              tempFTE.getAnnualSalary()+ "\r\n";
                         bw.write(data);      //write the data onto the file
                         
                    }
-                   
-                   
-                   System.out.println("Successfully written file");
+
                }
            }
-           
+                            
+                                   
+                   bw.write("END");
+
+                   System.out.println("Successfully written file");
            
         }
         catch(IOException ioe){

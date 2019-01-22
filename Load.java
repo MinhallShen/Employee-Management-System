@@ -1,4 +1,5 @@
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import static java.lang.Double.parseDouble;
@@ -31,13 +32,12 @@ public class Load extends javax.swing.JFrame {
 
         jLabel1.setText("Enter file to load");
 
-        LoadFileBox.addActionListener(new java.awt.event.ActionListener() {
+        LoadButton.setText("Load");
+        LoadButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LoadFileBoxActionPerformed(evt);
+                LoadButtonActionPerformed(evt);
             }
         });
-
-        LoadButton.setText("Load");
 
         CancelButton.setText("Cancel");
         CancelButton.addActionListener(new java.awt.event.ActionListener() {
@@ -83,48 +83,53 @@ public class Load extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_CancelButtonActionPerformed
 
-    private void LoadFileBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoadFileBoxActionPerformed
+    private void LoadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoadButtonActionPerformed
         // TODO add your handling code here:
         BufferedReader reader;
         
         try{
-            reader = new BufferedReader(new FileReader(LoadFileBox.getText() + ".txt"));    //create bufferedreader
-            String line = reader.readLine();
-            while((line = reader.readLine()) != null){  //while the line exists, keep reading
-                String[] var = line.split("^");
-                if(var[8] != null){
+            
+            reader = new BufferedReader(new FileReader(new File("C:/Users/minha/" + LoadFileBox.getText() + ".txt")));    //create bufferedreader
+            String line;
+            while(!"END".equals(line = reader.readLine())){  //while the line exists, keep reading
+
+                String[] var = line.split("\\^");
+                
+                if(var.length == 10){
                     int en = parseInt(var[0]);
                     String firstN = var[1];
                     String lastN = var[2];
                     int age = parseInt(var[3]);
                     int sex = parseInt(var[4]);
-                    int location = parseInt(var[5]);
-                    double deduct = parseDouble(var[6]);
+                    double deduct = parseDouble(var[5]);
+                    int location = parseInt(var[6]);
                     double hourlyWage = parseDouble(var[7]);
                     double hoursInWeek = parseDouble(var[8]);
                     double weeksInYear = parseDouble(var[9]);
                     PTE tempPTE = new PTE(en, firstN, lastN, age, sex, deduct, location, hourlyWage, hoursInWeek, weeksInYear);
                     this.hashTable.addEmployee(tempPTE); //add PTE
+                    
                 }
-                else{
+                if(var.length == 8){
                     int en = parseInt(var[0]);
                     String firstN = var[1];
                     String lastN = var[2];
                     int age = parseInt(var[3]);
                     int sex = parseInt(var[4]);
-                    int location = parseInt(var[5]);
-                    double deduct = parseDouble(var[6]);
+                    double deduct = parseDouble(var[5]);
+                    int location = parseInt(var[6]);
                     double salary = parseDouble(var[7]);
                     FTE tempFTE = new FTE(en, firstN, lastN, age, sex, deduct, location, salary);
                     this.hashTable.addEmployee(tempFTE);  //add FTE
                 }
+                //line = reader.readLine();
             }
+            System.out.println("Successfully loaded file");
             reader.close();
         }
         catch (IOException e){
-            e.printStackTrace();
         }
-    }//GEN-LAST:event_LoadFileBoxActionPerformed
+    }//GEN-LAST:event_LoadButtonActionPerformed
 
     /**
      * @param args the command line arguments
